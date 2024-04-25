@@ -11,6 +11,20 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
+app.post('/submit_post', (req, res) => {
+  const dateObj = new Date();
+  const day = dateObj.getDate();
+  const month = dateObj.getMonth() + 1;
+  const year = dateObj.getFullYear();
+  const submitDate = `${day}/${month}/${year}`;
+
+  const postData = {
+    title: req.body.postTitle,
+    date: submitDate,
+  };
+  res.render('index.ejs', postData);
+});
+
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });

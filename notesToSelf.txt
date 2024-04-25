@@ -1,0 +1,5 @@
+-Since node_modules folder is typically not pushed to github (or production), copied the minified 
+ bootstrap JS file from node_modules ( node_modules/bootstrap/dist/js/bootstrap.bundle.min.js ) to 
+ the public folder in the root directory. The same was done with the jQuery.min.js
+
+ 
