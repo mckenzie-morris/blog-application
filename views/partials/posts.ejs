@@ -1,17 +1,21 @@
-<div class="accordion col-6 m-5" id="accordionExample">
+<% if (locals.data) { %> <% console.log(locals.data); %>
+<div class="accordion col-12 col-sm-10 col-lg-8 col-xxl-6 m-5" id="accordion">
+  <% data.forEach( (elmt) => { %>
+
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button
-        class="accordion-button"
+        class="accordion-button d-inline"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#collapseOne"
         aria-expanded="true"
         aria-controls="collapseOne"
       >
-        <% if (locals.title) { %><strong><em><%=title%></em></strong>
-        <span class="text-end mx-3" style="width: 100%"><%=date%></span>
-        <% } %>
+        <strong><em><%=elmt.title%></em></strong>
+        <div class="float-end h-100">
+          <h7 class="mx-3"><%=elmt.date%></h7>
+        </div>
       </button>
     </h2>
     <div
@@ -19,9 +23,12 @@
       class="accordion-collapse collapse show"
       data-bs-parent="#accordionExample"
     >
-      <div class="accordion-body"><% if (locals.content) { %> 
-        <%=content%>
-        <% } %></div>
+      <div class="accordion-body"><%=elmt.content%></div>
     </div>
   </div>
+
+  <% }) %>
 </div>
+
+<% } %>
+<button type="button" class="btn-close" aria-label="Close"></button>

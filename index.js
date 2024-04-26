@@ -2,14 +2,20 @@ import express from 'express';
 
 const app = express();
 const port = 3000;
+let idx = 0;
+let postArray = [];
 
 app.use(express.static('public'));
 app.use('/node_modules', express.static('node_modules'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+  res.render('index.ejs', { data: postArray });
 });
+
+// Use closure function to track index of Post Objs Array
+// If length of Array is greater than 0, show accordion
+// 'Remove Post Button' decrements index and removes Obj from Array
 
 app.post('/submit_post', (req, res) => {
   const dateObj = new Date();
@@ -22,8 +28,11 @@ app.post('/submit_post', (req, res) => {
     title: req.body.postTitle,
     content: req.body.postContent,
     date: submitDate,
+    idx: ++idx,
   };
-  res.render('index.ejs', postData);
+
+  postArray.push(postData);
+  res.redirect('/');
 });
 
 app.listen(3000, () => {
@@ -31,20 +40,11 @@ app.listen(3000, () => {
 });
 
 /* 
--'CREATE NEW POST' button positioned at the top ==> click on button,
- expands/opens two text editors/input boxes with 'POST' button and 'CLEAR' button
 
- -1st input box is for title
+1.) postArray = [];
 
- -'CLEAR' button ==> deletes everything within box
+2.) postArray = [{title: xxx, content: xxx, date: xxxx, idx: xxx}]
 
- -'POST' button ==> will close input boxes, add the post to the list of posts, along with
- the date it was created, and to the top of the list
+3.) {data: postArray} = {data: [{title: xxx, content: xxx, date: xxxx, idx: xxx}, ...]}
+
 */
-
-/*
--Click on a post (will show title and date created in list), have option to edit or
-delete from list
-*/
-
-/* Click button =>  */
