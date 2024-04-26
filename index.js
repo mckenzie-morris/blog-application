@@ -16,10 +16,11 @@ app.post('/submit_post', (req, res) => {
   const day = dateObj.getDate();
   const month = dateObj.getMonth() + 1;
   const year = dateObj.getFullYear();
-  const submitDate = `${day}/${month}/${year}`;
+  const submitDate = `${month}/${day}/${year}`;
 
   const postData = {
     title: req.body.postTitle,
+    content: req.body.postContent,
     date: submitDate,
   };
   res.render('index.ejs', postData);

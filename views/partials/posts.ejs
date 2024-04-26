@@ -9,7 +9,9 @@
         aria-expanded="true"
         aria-controls="collapseOne"
       >
-        <% if (locals.title) { %> <%=title%> <% } %>
+        <% if (locals.title) { %><strong><em><%=title%></em></strong>
+        <span class="text-end mx-3" style="width: 100%"><%=date%></span>
+        <% } %>
       </button>
     </h2>
     <div
@@ -17,7 +19,9 @@
       class="accordion-collapse collapse show"
       data-bs-parent="#accordionExample"
     >
-      <div class="accordion-body">stuff</div>
+      <div class="accordion-body"><% if (locals.content) { %> 
+        <%=content%>
+        <% } %></div>
     </div>
   </div>
 </div>
