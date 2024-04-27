@@ -7,3 +7,9 @@
 
 // Then add additional custom code here
 
+.custom_text {
+    hyphens: none;
+    @media (max-width: 576px) {
+      hyphens: auto;
+    }
+  }

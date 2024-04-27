@@ -11965,3 +11965,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.custom_text {
+  -webkit-hyphens: none;
+          hyphens: none;
+}
+@media (max-width: 576px) {
+  .custom_text {
+    -webkit-hyphens: auto;
+            hyphens: auto;
+  }
+}
