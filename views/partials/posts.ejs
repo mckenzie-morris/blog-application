@@ -8,9 +8,9 @@
         class="accordion-button"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapseOne"
+        data-bs-target="#collapse<%=elmt.idx%>"
         aria-expanded="true"
-        aria-controls="collapseOne"
+        aria-controls="collapse<%=elmt.idx%>"
       >
         <div class="custom_text">
           <strong><em><%=elmt.title%></em></strong>
@@ -22,9 +22,9 @@
     </h2>
 
     <div
-      id="collapseOne"
-      class="accordion-collapse collapse show"
-      data-bs-parent="#accordionExample"
+      id="collapse<%=elmt.idx%>"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordion"
     >
       <div class="accordion-body custom_text"><%=elmt.content%></div>
     </div>
