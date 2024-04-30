@@ -7,9 +7,29 @@
 
 // Then add additional custom code here
 
+h1 {
+  font-size: 5rem;
+}
+
+textarea {
+  height: 15rem;
+}
+
+.theme_toggle {
+  cursor: pointer;
+}
+
 .custom_text {
-    hyphens: none;
-    @media (max-width: 576px) {
-      hyphens: auto;
-    }
+  hyphens: none;
+  @media (max-width: 576px) {
+    hyphens: auto;
   }
+}
+
+.accordion-button {
+  overflow: auto;
+}
+
+.modal_input {
+  width: 300px;
+}

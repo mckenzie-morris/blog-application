@@ -10,9 +10,9 @@
       <div class="modal-header">
         <form action="/submit_post" method="POST">
         <input
+          class = "modal_input"  
           type="text"
           name="postTitle"
-          style="width: 300px"
           placeholder="Title..."
         />
         <button
@@ -22,7 +22,7 @@
           aria-label="Close"
         ></button>
       </div>
-      <textarea style="height: 15rem" type="text" name="postContent"></textarea>
+      <textarea type="text" name="postContent"></textarea>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
