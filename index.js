@@ -13,14 +13,8 @@ app.get('/', (req, res) => {
   res.render('index.ejs', { data: postArray });
 });
 
-// Use closure function to track index of Post Objs Array
-// If length of Array is greater than 0, show accordion
-// 'Remove Post Button' decrements index and removes Obj from Array
 
 app.post('/submit_post', (req, res) => {
-  if (req.body.postTitle.length === 0 || req.body.postTitle.length >= 100) {
-    return;
-  }
 
   const dateObj = new Date();
   const day = dateObj.getDate();
