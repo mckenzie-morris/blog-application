@@ -33,3 +33,10 @@ textarea {
 #modal_input {
   width: 300px;
 }
+
+form {
+  @media (max-width: 500px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
