@@ -1,21 +1,3 @@
-// It is not necessary to import jQuery
-/* 
-There are two main module systems in JavaScript: CommonJS and ES6 modules.
-using import statements in ES6 modules, the JavaScript runtime loads the module and evaluates 
-its contents. 
-ES6 modules use strict mode by default, and they have their own scope, meaning that variables 
-and functions defined within a module are not accessible outside of it unless explicitly 
-exported.
-jQuery, however, is not designed to be used as an ES6 module. It's traditionally used as a 
-global variable ($ or jQuery) that is accessible throughout your JavaScript code without 
-needing to import it explicitly. This is achieved by including the jQuery library in your 
-HTML file using a <script> tag.
-when you include jQuery using a <script> tag in your HTML file, it becomes available globally, 
-and you can use it directly in your JavaScript code without needing to import it using ES6 
-module syntax.
-*/
-
-
 $('#light_option').on('click', () => {
   if ($('html').attr('data-bs-theme') === 'dark') {
     $('html').removeAttr('data-bs-theme');
@@ -29,3 +11,23 @@ $('#dark_option').on('click', () => {
     $('html').attr('data-bs-theme', 'dark');
   }
 });
+
+$('#close_button_X').on('click', () => {
+  $('#modal_input').val(null);
+  $('#text_content').val(null);
+});
+
+$('#close_modal_button').on('click', () => {
+  $('#modal_input').val(null);
+  $('#text_content').val(null);
+});
+
+$('#post_submit_button').on('click', () => {
+  if ($('#modal_input').val().length === 0) {
+    alert('Please enter a valid post title');
+  }
+});
+
+if ($('#modal_input').val().length >= 100) {
+  alert('Title may not be greater than 100 characters');
+}

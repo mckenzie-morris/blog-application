@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
 // 'Remove Post Button' decrements index and removes Obj from Array
 
 app.post('/submit_post', (req, res) => {
+  if (req.body.postTitle.length === 0 || req.body.postTitle.length >= 100) {
+    return;
+  }
+
   const dateObj = new Date();
   const day = dateObj.getDate();
   const month = dateObj.getMonth() + 1;
@@ -35,16 +39,19 @@ app.post('/submit_post', (req, res) => {
   res.redirect('/');
 });
 
+// Any route not defined is 404'ed
+app.use('*', (req, res) => {
+  res.status(404).send('404: Page not found- you silly goose');
+});
+
+// Global Error Handler
+app.use((error, req, res, next) => {
+  const defaultMessage = 'Uh-oh, something went wrong';
+  const message = error.message || defaultMessage;
+  console.log(message);
+  res.status(500).send(message);
+});
+
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
-
-/* 
-
-1.) postArray = [];
-
-2.) postArray = [{title: xxx, content: xxx, date: xxxx, idx: xxx}]
-
-3.) {data: postArray} = {data: [{title: xxx, content: xxx, date: xxxx, idx: xxx}, ...]}
-
-*/
