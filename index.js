@@ -13,9 +13,7 @@ app.get('/', (req, res) => {
   res.render('index.ejs', { data: postArray });
 });
 
-
 app.post('/submit_post', (req, res) => {
-
   const dateObj = new Date();
   const day = dateObj.getDate();
   const month = dateObj.getMonth() + 1;

@@ -1,14 +1,20 @@
-$('#light_option').on('click', () => {
+const lightThemeImgSrc = 'light-mode-day-sun.svg';
+const darkThemeImgSrc = 'dark-mode-night-moon.svg';
+
+$('#theme_toggle').on('click', () => {
   if ($('html').attr('data-bs-theme') === 'dark') {
     $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'light');
+    $('#theme_toggle_img').removeAttr('src');
+    $('#theme_toggle_img').attr('src', darkThemeImgSrc);
+    return;
   }
-});
-
-$('#dark_option').on('click', () => {
   if ($('html').attr('data-bs-theme') === 'light') {
     $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'dark');
+    $('#theme_toggle_img').removeAttr('src');
+    $('#theme_toggle_img').attr('src', lightThemeImgSrc);
+    return;
   }
 });
 

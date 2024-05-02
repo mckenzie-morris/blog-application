@@ -11973,10 +11973,6 @@ textarea {
   height: 15rem;
 }
 
-.theme_toggle {
-  cursor: pointer;
-}
-
 .custom_text {
   -webkit-hyphens: none;
           hyphens: none;
