@@ -1,7 +1,9 @@
 const lightThemeImgSrc = 'light-mode-day-sun.svg';
 const darkThemeImgSrc = 'dark-mode-night-moon.svg';
 
+// Toggle theme
 $('#theme_toggle').on('click', () => {
+  // change theme from dark mode to light mode
   if ($('html').attr('data-bs-theme') === 'dark') {
     $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'light');
@@ -9,6 +11,7 @@ $('#theme_toggle').on('click', () => {
     $('#theme_toggle_img').attr('src', darkThemeImgSrc);
     return;
   }
+  // change theme from light mode to dark mode
   if ($('html').attr('data-bs-theme') === 'light') {
     $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'dark');
@@ -39,9 +42,7 @@ $('#close_modal_button').on('click', () => {
   5.) Post content consists only of spaces
 
   form submission will be prevented
-
 */
-
 // regex to test if string only consists of tabs spaces
 const regex = /^ *$/;
 
@@ -66,7 +67,6 @@ $('form').on('submit', (event) => {
   5.) Post content consists only of spaces
 
   An alert will be sent to the user
-
 */
 $('#post_submit_button').on('click', () => {
   if ($('#modal_input').val().length === 0) {

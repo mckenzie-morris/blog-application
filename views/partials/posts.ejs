@@ -2,15 +2,15 @@
 <div class="accordion col-12 col-sm-10 col-lg-8 col-xxl-6 m-5" id="accordion">
   <% for (let i = data.length - 1; i >= 0; i -= 1) { %>
 
-  <div class="accordion-item">
+  <div id="post_number_<%=i%>" class="accordion-item">
     <h2 class="accordion-header">
       <button
         class="accordion-button"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapse<%=data[i].idx%>"
+        data-bs-target="#collapse<%=i%>"
         aria-expanded="true"
-        aria-controls="collapse<%=data[i].idx%>"
+        aria-controls="collapse<%=i%>"
       >
         <div class="custom_text">
           <strong><em><%=data[i].title%></em></strong>
@@ -22,11 +22,37 @@
     </h2>
 
     <div
-      id="collapse<%=data[i].idx%>"
+      id="collapse<%=i%>"
       class="accordion-collapse collapse"
       data-bs-parent="#accordion"
     >
       <div class="accordion-body custom_text"><%=data[i].content%></div>
+      <div class="d-flex justify-content-end">
+        <button
+          id="edit_button<%=i%>"
+          type="button"
+          class="btn btn-outline-warning m-2"
+        >
+          <img
+            id="pencil_icon"
+            src="edit-pencil.svg"
+            height="15px"
+            width="15px"
+          />
+        </button>
+        <button
+          id="delete_button<%=i%>"
+          type="button"
+          class="btn btn-outline-danger m-2"
+        >
+          <img
+            id="trash_icon"
+            src="delete-trash-can.svg"
+            height="15px"
+            width="15px"
+          />
+        </button>
+      </div>
     </div>
   </div>
 
