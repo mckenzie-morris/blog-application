@@ -40,10 +40,12 @@
             width="15px"
           />
         </button>
+        <!-- data-* attribute is used to store custom data private to the page or application. -->
         <button
           id="delete_button<%=i%>"
+          data-post_index="<%=i%>"
           type="button"
-          class="btn btn-outline-danger m-2"
+          class="btn btn-outline-danger m-2 delete_button"
         >
           <img
             id="trash_icon"

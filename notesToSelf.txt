@@ -16,3 +16,36 @@
     when you include jQuery using a <script> tag in your HTML file, it becomes available globally, 
     and you can use it directly in your JavaScript code without needing to import it using ES6 
     module syntax.
+
+-In Express.js, the res.redirect() function is typically used to redirect the client to a 
+ different URL. However, the behavior of res.redirect() depends on the HTTP method used in the 
+ request and the client's interpretation of the response.
+  *When using res.redirect() in a .post controller, the client (e.g., a web browser) typically 
+   follows the redirect because it's expecting a redirect response after a successful form 
+   submission. Browsers often automatically follow redirects for POST requests.
+  *However, when you use res.redirect() in a .delete controller, the behavior might differ. 
+   Browsers may not automatically follow redirects for DELETE requests. 
+  *This is because DELETE requests are typically used to delete resources and the expectation 
+   is different from that of a form submission.
+  *If it's necessary to redirect the client after a DELETE request, consider sending a response 
+   indicating the successful deletion and then handling the redirect on the client-side 
+   JavaScript after receiving that response.
+
+-Apart from data-* attributes, jQuery's .data() method can be used to store arbitrary data 
+ associated with elements. This data is stored in memory rather than in the DOM, making it a 
+ more flexible option. For example:
+
+                            // Storing data
+                            $('button').data('key', 'value');
+
+                            // Retrieving data
+                            const value = $('button').data('key');
+
+  *This allows you to store and retrieve data without explicitly using data-* attributes in HTML.
+  *jQuery's .data() method can be used to cache data associated with elements. This can be 
+   particularly useful when working with dynamic content or repeatedly accessing the same data. 
+   By storing the data with .data(), you can avoid repeatedly querying the DOM for the same 
+   information.
+  *jQuery's .data() method can also be used in event handling to pass data along with events. 
+   This allows you to associate additional information with events, which can be useful for 
+   event delegation and handling complex interactions.

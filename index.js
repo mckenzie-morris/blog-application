@@ -37,11 +37,11 @@ app.post('/submit_post', (req, res) => {
   res.redirect('/');
 });
 
-/*Use splice() method to remove postArray entry corresponding to matching delete button,
-then redirect to root route */
-app.delete('/delete_post', (req, res) => {
-
-})
+app.delete('/delete_post/:idx', (req, res) => {
+  const postIndex = req.params.idx;
+  postArray.splice(postIndex, 1);
+  res.sendStatus(200);
+});
 
 // Any route not defined is 404'ed
 app.use('*', (req, res) => {

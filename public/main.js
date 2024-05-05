@@ -98,3 +98,32 @@ $('#modal_input').on('keypress', () => {
     return;
   }
 });
+
+// The anonymous function below is the most up to date version of $(document).ready()
+$(() => {
+  $('.delete_button').on('click', function () {
+    /* The .data() method in jQuery is primarily used to access and manipulate 
+    data-* attributes in HTML elements. These attributes allow you to store custom 
+    data associated with elements. */
+    const postIndex = $(this).data('post_index');
+    const deletePostFunc = async (postIndex) => {
+      try {
+        const response = await fetch(`/delete_post/${postIndex}`, {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          console.log('delete successful');
+          /* window.location.href property returns the URL of the current page.
+          window.location.href is being used to redirect after successfully deleting 
+          the post */
+          window.location.href = '/';
+        } else {
+          console.log('Failed to delete post');
+        }
+      } catch (error) {
+        console.log('Delete post failed!');
+      }
+    };
+    deletePostFunc(postIndex);
+  });
+});
