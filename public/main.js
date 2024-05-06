@@ -101,11 +101,14 @@ $('#modal_input').on('keypress', () => {
 
 // The anonymous function below is the most up to date version of $(document).ready()
 $(() => {
+  let postIndex;
   $('.delete_button').on('click', function () {
+    postIndex = $(this).data('post_index');
+  });
+  $('#delete_confirmed').on('click', function () {
     /* The .data() method in jQuery is primarily used to access and manipulate 
     data-* attributes in HTML elements. These attributes allow you to store custom 
     data associated with elements. */
-    const postIndex = $(this).data('post_index');
     const deletePostFunc = async (postIndex) => {
       try {
         const response = await fetch(`/delete_post/${postIndex}`, {
