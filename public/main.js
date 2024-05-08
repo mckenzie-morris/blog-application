@@ -101,19 +101,22 @@ $('#modal_input').on('keypress', () => {
 
 // The anonymous function below is the most up to date version of $(document).ready()
 $(() => {
-  let postIndex;
+  /* instantiate a variable, 'postIndexDelete' to store the index of the post corresponding
+  to the clicked delete button */
+  let postIndexDelete;
   $('.delete_button').on('click', function () {
-    postIndex = $(this).data('post_index');
+    postIndexDelete = $(this).data('post_index_delete');
   });
   $('#delete_confirmed').on('click', function () {
     /* The .data() method in jQuery is primarily used to access and manipulate 
     data-* attributes in HTML elements. These attributes allow you to store custom 
     data associated with elements. */
-    const deletePostFunc = async (postIndex) => {
+    const deletePostFunc = async (postIndexDelete) => {
       try {
-        const response = await fetch(`/delete_post/${postIndex}`, {
+        const response = await fetch(`/delete_post/${postIndexDelete}`, {
           method: 'DELETE',
         });
+        // returns True if status_code is less than 400, otherwise False.
         if (response.ok) {
           console.log('delete successful');
           /* window.location.href property returns the URL of the current page.
@@ -127,6 +130,22 @@ $(() => {
         console.log('Delete post failed!');
       }
     };
-    deletePostFunc(postIndex);
+    deletePostFunc(postIndexDelete);
   });
+});
+
+// change the color of the delete icon when hover over it
+$('.delete_button').on('mouseenter', () => {
+  $('.trash_icon').attr('src', 'delete-trash-can-dark.svg');
+});
+$('.delete_button').on('mouseleave', () => {
+  $('.trash_icon').attr('src', 'delete-trash-can.svg');
+});
+
+// change the color of the edit icon when hover over it
+$('.edit_button').on('mouseenter', () => {
+  $('.pencil_icon').attr('src', 'edit-pencil-dark.svg');
+});
+$('.edit_button').on('mouseleave', () => {
+  $('.pencil_icon').attr('src', 'edit-pencil.svg');
 });

@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // render index.ejs to root route with post data (if any)
 app.get('/', (req, res) => {
-  res.render('index.ejs', { data: postArray });
+  res.status(200).render('index.ejs', { data: postArray });
 });
 
 /* generate a date, gather post data from req.body, save data on 'postData' obj 
@@ -34,13 +34,19 @@ app.post('/submit_post', (req, res) => {
   };
 
   postArray.push(postData);
-  res.redirect('/');
+  res.status(200).redirect('/');
+});
+
+app.get('/edit_post/:idx', (req, res) => {
+  const postIndex = req.params.idx;
+  res.status(200).send(console.log(postArray[postIndex]));
+  console.log('ayyyyyyyyyyy');
 });
 
 app.delete('/delete_post/:idx', (req, res) => {
   const postIndex = req.params.idx;
   postArray.splice(postIndex, 1);
-  res.sendStatus(200);
+  res.sendStatus(204);
 });
 
 // Any route not defined is 404'ed
