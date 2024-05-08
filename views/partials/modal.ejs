@@ -10,30 +10,30 @@
     <div class="modal-content">
       <div class="modal-header">
         <form action="/submit_post" method="POST" class="d-inline-flex d-sm-flex row w-100 align-items-center justify-content-between">
-        <div class="col-auto">
-          <input
-            id="modal_input"
-            type="text"
-            name="postTitle"
-            placeholder="Title... (max. 100 characters)"
-          />
-        </div>
-          <div class="col-auto d-flex align-items-center">
-            <p class="my-auto"><em>Clear Inputs</em></p>
-            <button 
-              id="close_button_X"
-              type="button"
-              class="btn-close"       
-              aria-label="Close"
-            ></button>
+            <div class="col-auto">
+              <input
+                id="modal_input"
+                type="text"
+                name="postTitle"
+                placeholder="Title... (max. 100 characters)"
+              />
+            </div>
+              <div class="col-auto d-flex align-items-center">
+                <p class="my-auto"><em>Clear Inputs</em></p>
+                <button 
+                  id="close_button_X"
+                  type="button"
+                  class="btn-close"       
+                  aria-label="Close"
+                ></button>
+              </div>
           </div>
-      </div>
-      <textarea id="text_content" type="text" name="postContent" placeholder="Content..."></textarea>
-      <div class="modal-footer">
-        <button id="close_modal_button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-                 <button id="post_submit_button" type="submit" class="btn btn-primary">Post!</button>
+          <textarea id="text_content" type="text" name="postContent" placeholder="Content..."></textarea>
+          <div class="modal-footer">
+            <button id="close_modal_button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+                    <button id="post_submit_button" type="submit" class="btn btn-primary">Post!</button>
         </form>
       </div>
     </div>

@@ -37,10 +37,10 @@ app.post('/submit_post', (req, res) => {
   res.status(200).redirect('/');
 });
 
-app.get('/edit_post/:idx', (req, res) => {
-  const postIndex = req.params.idx;
-  res.status(200).send(console.log(postArray[postIndex]));
-  console.log('ayyyyyyyyyyy');
+app.get('/edit_post/:postIndex', (req, res) => {
+  const postIndex = req.params.postIndex;
+  console.log(postArray[postIndex]);
+  res.send(postArray[postIndex])
 });
 
 app.delete('/delete_post/:idx', (req, res) => {
