@@ -133,35 +133,34 @@ $(() => {
     deletePostFunc(postIndexDelete);
   });
   ///////////////////////////////////////////////////////////////////////////
-  let postIndexEdit;
+
   $('.edit_button').on('click', function () {
-    postIndexEdit = $(this).data('post_index_edit');
-    console.log(postIndexEdit);
+    let postIndexEdit = $(this).data('post_index_edit');
+    const editPostFunc = async (postIndexEdit) => {
+      try {
+        const response = await fetch(`/edit_post/${postIndexEdit}`, {
+          method: 'GET',
+        });
+
+        // returns True if status_code is less than 400, otherwise False.
+        if (response.ok) {
+          console.log('edit successful');
+          // Parse the JSON data from the response body
+          const responseData = await response.json();
+
+          // Access the postContent from the parsed data
+          const postContent = responseData.postContent;
+          console.log(postContent);
+          $('#edit_area').val(postContent);
+        } else {
+          console.log('Failed to edit post');
+        }
+      } catch (error) {
+        console.log('edit post failed!');
+      }
+    };
+    editPostFunc(postIndexEdit);
   });
-
-  // $('#edit_button0').on('click', function () {
-  //   const editPostFunc = async () => {
-  //     try {
-  //       const response = await fetch('/edit_post/0', { method: 'GET' });
-
-  //       // returns True if status_code is less than 400, otherwise False.
-  //       if (response.ok) {
-  //         console.log('edit successful');
-  //         /* window.location.href property returns the URL of the current page.
-  //           window.location.href is being used to redirect after successfully deleting
-  //           the post */
-  //       } else {
-  //         console.log('Failed to edit post');
-  //       }
-  //     } catch (error) {
-  //       console.log('edit post failed!');
-  //     }
-  //   };
-  //   editPostFunc();
-  // });
-  //////////////////////////////////////////////////////////////////////////////
-
-  //////////////////////////////////////////////////////////////////////////////
 });
 
 // change the color of the delete icon when hover over it

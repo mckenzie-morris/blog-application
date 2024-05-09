@@ -39,8 +39,7 @@ app.post('/submit_post', (req, res) => {
 
 app.get('/edit_post/:postIndex', (req, res) => {
   const postIndex = req.params.postIndex;
-  console.log(postArray[postIndex]);
-  res.send(postArray[postIndex])
+  res.status(200).json({ postContent: postArray[postIndex].content });
 });
 
 app.delete('/delete_post/:idx', (req, res) => {
