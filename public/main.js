@@ -148,10 +148,11 @@ $(() => {
           // Parse the JSON data from the response body
           const responseData = await response.json();
 
-          // Access the postContent from the parsed data
+          // Access the the parsed data
+          const postTitle = responseData.postTitle;
           const postContent = responseData.postContent;
-          console.log(postContent);
           $('#edit_area').val(postContent);
+          $('#edit_input').val(postTitle);
         } else {
           console.log('Failed to edit post');
         }

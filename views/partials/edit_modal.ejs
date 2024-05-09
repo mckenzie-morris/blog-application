@@ -1,11 +1,30 @@
 <div class="modal fade" tabindex="-1" id="edit_modal">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header"></div>
-      <div class="modal-body p-0">
-        <textarea id="edit_area" class="d-block w-100" ></textarea>
+      <div class="d-block modal-header">
+        <h5 class="mb-2 text-center">Edit Post</h5>
+        <div>
+          <input id="edit_input" type="text" class="modal_input" />
+        </div>
       </div>
-      <div class="modal-footer"></div>
+      <div class="modal-body p-0">
+        <textarea id="edit_area" class="d-block w-100"></textarea>
+      </div>
+      <div class="modal-footer p-0">
+        <button
+          type="button"
+          class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"
+        >
+          <strong>Save changes!</strong>
+        </button>
+        <button
+          type="button"
+          class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0"
+          data-bs-dismiss="modal"
+        >
+          <strong>Fuhgettaboutit!</strong>
+        </button>
+      </div>
     </div>
   </div>
 </div>
