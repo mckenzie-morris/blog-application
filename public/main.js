@@ -46,7 +46,7 @@ $('#close_modal_button').on('click', () => {
 // regex to test if string only consists of tabs spaces
 const regex = /^ *$/;
 
-$('form').on('submit', (event) => {
+$('#submit_post_form').on('submit', (event) => {
   if (
     $('#modal_input').val().length === 0 ||
     $('#text_content').val().length === 0 ||
@@ -151,8 +151,11 @@ $(() => {
           // Access the the parsed data
           const postTitle = responseData.postTitle;
           const postContent = responseData.postContent;
+          const postDate = responseData.postDate;
+
           $('#edit_area').val(postContent);
           $('#edit_input').val(postTitle);
+
         } else {
           console.log('Failed to edit post');
         }
@@ -162,6 +165,7 @@ $(() => {
     };
     editPostFunc(postIndexEdit);
   });
+    ///////////////////////////////////////////////////////////////////////////
 });
 
 // change the color of the delete icon when hover over it

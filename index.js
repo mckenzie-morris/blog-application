@@ -15,17 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // render index.ejs to root route with post data (if any)
 app.get('/', (req, res) => {
-  res.status(200).render('index.ejs', { data: postArray });
+  return res.status(200).render('index.ejs', { data: postArray });
 });
 
 /* generate a date, gather post data from req.body, save data on 'postData' obj 
 and push to 'postArray', then redirect to root route when the 'Post!' button is clicked */
 app.post('/submit_post', (req, res) => {
-  const dateObj = new Date();
-  const day = dateObj.getDate();
-  const month = dateObj.getMonth() + 1;
-  const year = dateObj.getFullYear();
-  const submitDate = `${month}/${day}/${year}`;
+  const submitDate = new Date();
 
   const postData = {
     title: req.body.postTitle,
@@ -34,28 +30,36 @@ app.post('/submit_post', (req, res) => {
   };
 
   postArray.push(postData);
-  res.status(200).redirect('/');
+  return res.status(200).redirect('/');
 });
 
 app.get('/edit_post/:postIndex', (req, res) => {
   const postIndex = req.params.postIndex;
-  res
-    .status(200)
-    .json({
-      postContent: postArray[postIndex].content,
-      postTitle: postArray[postIndex].title,
-    });
+  return res.status(200).json({
+    postContent: postArray[postIndex].content,
+    postTitle: postArray[postIndex].title,
+    postDate: postArray[postIndex].date,
+  });
+});
+
+app.post('/test', (req, res) => {
+  const editData = {
+    editTitle: req.body.editTitle,
+    editContent: req.body.editContent,
+  };
+  console.log(editData);
+  return res.sendStatus(200);
 });
 
 app.delete('/delete_post/:idx', (req, res) => {
   const postIndex = req.params.idx;
   postArray.splice(postIndex, 1);
-  res.sendStatus(204);
+  return res.sendStatus(204);
 });
 
 // Any route not defined is 404'ed
 app.use('*', (req, res) => {
-  res.status(404).send('404: Page not found- you silly goose');
+  return res.status(404).send('404: Page not found- you silly goose');
 });
 
 // Global Error Handler
@@ -63,9 +67,9 @@ app.use((error, req, res, next) => {
   const defaultMessage = 'Uh-oh, something went wrong';
   const message = error.message || defaultMessage;
   console.log(message);
-  res.status(500).send(message);
+  return res.status(500).send(message);
 });
 
 app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+  return console.log('Server listening on port 3000');
 });
