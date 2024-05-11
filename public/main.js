@@ -153,9 +153,9 @@ $(() => {
           const postContent = responseData.postContent;
           const postDate = responseData.postDate;
 
+
           $('#edit_area').val(postContent);
           $('#edit_input').val(postTitle);
-
         } else {
           console.log('Failed to edit post');
         }
@@ -165,7 +165,7 @@ $(() => {
     };
     editPostFunc(postIndexEdit);
   });
-    ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
 });
 
 // change the color of the delete icon when hover over it

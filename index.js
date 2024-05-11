@@ -46,6 +46,7 @@ app.post('/test', (req, res) => {
   const editData = {
     editTitle: req.body.editTitle,
     editContent: req.body.editContent,
+    editDate: req.body.editDate,
   };
   console.log(editData);
   return res.sendStatus(200);

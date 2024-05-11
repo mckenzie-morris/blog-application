@@ -29,13 +29,13 @@
       <div class="accordion-body custom_text"><%=data[i].content%></div>
       <div class="d-flex justify-content-end">
         <!-- data-* attribute is used to store custom data private to the page or application. -->
-        <form action="/edit_post/<%=i%>" method="get">
+
           <button
             id="edit_button<%=i%>"
             data-post_index_edit="<%=i%>"
             data-bs-toggle="modal"
             data-bs-target="#edit_modal"
-            type="submit"
+            type="button"
             class="edit_button btn btn-outline-warning m-2"
           >
             <img
@@ -45,7 +45,7 @@
               width="15px"
             />
           </button>
-        </form>
+
         <!-- data-* attribute is used to store custom data private to the page or application. -->
         <button
           id="delete_button<%=i%>"
