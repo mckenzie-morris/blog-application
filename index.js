@@ -42,14 +42,26 @@ app.get('/edit_post/:postIndex', (req, res) => {
   });
 });
 
-app.post('/test', (req, res) => {
+app.post('/edit_submit', (req, res) => {
+  const currentIdx = req.body.editIdx;
+  // const editData = {
+  //   title: req.body.editTitle,
+  //   content: req.body.editContent,
+  //   date: req.body.postDate,
+  //   editDate: req.body.editDate,
+  // };
+  // postArray.splice(currentIdx, 1, editData);
+  const editDate = new Date();
   const editData = {
-    editTitle: req.body.editTitle,
-    editContent: req.body.editContent,
-    editDate: req.body.editDate,
+    title: req.body.editTitle,
+    content: req.body.editContent,
+    editDate: editDate,
+    // editDate: req.body.editDate,
   };
-  console.log(editData);
-  return res.sendStatus(200);
+  for (let key in editData) {
+    postArray[currentIdx][key] = editData[key];
+  }
+  return res.status(200).redirect('/');
 });
 
 app.delete('/delete_post/:idx', (req, res) => {
