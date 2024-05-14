@@ -1,7 +1,6 @@
 <form action="/edit_submit" method="POST">
-  <input type="hidden" id="edit_idx" name="editIdx"/>
-  <input type="hidden" id="post_date" name="postDate"/>
-  <input type="hidden" id="edit_date" name="editDate" value="<%=new Date()%>" />
+  <input type="hidden" id="edit_idx" name="editIdx" />
+  <input type="hidden" id="post_date" name="postDate" />
   <div
     class="modal fade modal-lg animate__animated animate__bounceIn"
     tabindex="-1"
@@ -12,12 +11,7 @@
         <div class="d-block modal-header">
           <h5 class="mb-2 text-center">Edit Post</h5>
           <div>
-            <input
-              id="edit_input"
-              type="text"
-              class="modal_input"
-              name="editTitle"
-            />
+            <input id="edit_input" type="text" class="modal_input" name="editTitle" />
           </div>
         </div>
         <div class="modal-body p-0">
@@ -39,7 +33,7 @@
             class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0"
             data-bs-dismiss="modal"
           >
-            <strong>Fuhgettaboutit!</strong>
+            <span class="hyphenate"><strong>Fuhgettaboutit!</strong></span>
           </button>
         </div>
       </div>

@@ -3,7 +3,7 @@ const darkThemeImgSrc = 'dark-mode-night-moon.svg';
 
 // Toggle theme
 $('#theme_toggle').on('click', () => {
-  // change theme from dark mode to light mode
+  // change theme from dark mode to light mode on click
   if ($('html').attr('data-bs-theme') === 'dark') {
     $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'light');
@@ -11,7 +11,7 @@ $('#theme_toggle').on('click', () => {
     $('#theme_toggle_img').attr('src', darkThemeImgSrc);
     return;
   }
-  // change theme from light mode to dark mode
+  // change theme from light mode to dark mode on click
   if ($('html').attr('data-bs-theme') === 'light') {
     $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'dark');
@@ -41,9 +41,8 @@ $('#close_modal_button').on('click', () => {
   4.) Post content is blank
   5.) Post content consists only of spaces
 
-  form submission will be prevented
-*/
-// regex to test if string only consists of tabs spaces
+form submission will be prevented */
+// regex to test if string only consists of spaces
 const regex = /^ *$/;
 
 $('#submit_post_form').on('submit', (event) => {
@@ -86,7 +85,7 @@ $('#post_submit_button').on('click', () => {
     return;
   }
   if ($('#modal_input').val().length >= 100) {
-    alert('Title may not be greater than 100 characters');
+    alert('Title may not be greater than 99 characters');
     return;
   }
 });
@@ -94,23 +93,21 @@ $('#post_submit_button').on('click', () => {
 // if user types a Title that is 100 or more characters, alert is sent
 $('#modal_input').on('keypress', () => {
   if ($('#modal_input').val().length >= 100) {
-    alert('Title may not be greater than 100 characters');
+    alert('Title may not be greater than 99 characters');
     return;
   }
 });
 
-// The anonymous function below is the most up to date version of $(document).ready()
+// The anonymous function below is the most up to date version of $(document).ready() in jQuery
 $(() => {
   /* instantiate a variable, 'postIndexDelete' to store the index of the post corresponding
   to the clicked delete button */
   let postIndexDelete;
   $('.delete_button').on('click', function () {
-    postIndexDelete = $(this).data('post_index_delete');
+    return (postIndexDelete = $(this).data('post_index_delete'));
   });
+  /* when 'Delete' button is clicked, make fetch request to server with parameterized endpoint */
   $('#delete_confirmed').on('click', function () {
-    /* The .data() method in jQuery is primarily used to access and manipulate 
-    data-* attributes in HTML elements. These attributes allow you to store custom 
-    data associated with elements. */
     const deletePostFunc = async (postIndexDelete) => {
       try {
         const response = await fetch(`/delete_post/${postIndexDelete}`, {
@@ -132,10 +129,11 @@ $(() => {
     };
     deletePostFunc(postIndexDelete);
   });
-  ///////////////////////////////////////////////////////////////////////////
 
+  /* instantiate a constant, 'postIndexEdit' to store the index of the post corresponding
+  to the clicked edit button, then make fetch request to server with parameterized endpoint */
   $('.edit_button').on('click', function () {
-    let postIndexEdit = $(this).data('post_index_edit');
+    const postIndexEdit = $(this).data('post_index_edit');
     const editPostFunc = async (postIndexEdit) => {
       try {
         const response = await fetch(`/edit_post/${postIndexEdit}`, {
@@ -145,14 +143,15 @@ $(() => {
         // returns True if status_code is less than 400, otherwise False.
         if (response.ok) {
           console.log('edit successful');
-          // Parse the JSON data from the response body
+          // parse the JSON data from the response body
           const responseData = await response.json();
 
-          // Access the the parsed data
+          // access the parsed data
           const postTitle = responseData.postTitle;
           const postContent = responseData.postContent;
           const postDate = responseData.postDate;
 
+          // populate the 'edit_modal' form with parsed values from response body
           $('#edit_idx').val(postIndexEdit);
           $('#post_date').val(postDate);
           $('#edit_area').val(postContent);
@@ -166,10 +165,11 @@ $(() => {
     };
     editPostFunc(postIndexEdit);
   });
-  ///////////////////////////////////////////////////////////////////////////
+
+  // bottom of $(document).ready()
 });
 
-// change the color of the delete icon when hover over it
+// change the color of the delete icon when hovering over it
 $('.delete_button').on('mouseenter', () => {
   $('.trash_icon').attr('src', 'delete-trash-can-dark.svg');
 });
@@ -177,7 +177,7 @@ $('.delete_button').on('mouseleave', () => {
   $('.trash_icon').attr('src', 'delete-trash-can.svg');
 });
 
-// change the color of the edit icon when hover over it
+// change the color of the edit icon when hovering over it
 $('.edit_button').on('mouseenter', () => {
   $('.pencil_icon').attr('src', 'edit-pencil-dark.svg');
 });

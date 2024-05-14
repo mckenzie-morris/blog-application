@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mckenzie Blog</title>
     <link rel="stylesheet" href="main.css" />
+    <!-- animations for modals -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -23,14 +24,14 @@
         />
       </button>
     </div>
-    <!-- Primary container div -->
+    <!-- primary container div -->
     <div class="container-fluid d-flex flex-column align-items-center">
-      <!-- Header -->
+      <!-- header -->
       <div class="m-5">
         <h1 class="text-center">Hello</h1>
         <h2 class="text-center">Welcome to my blog!</h2>
       </div>
-      <!-- Button trigger modal -->
+      <!-- button trigger post_modal -->
       <div class="m-4">
         <button
           type="button"
@@ -41,14 +42,12 @@
           Make A Post
         </button>
       </div>
-      <!-- Modal -->
-      <%- include('partials/modal.ejs') %>
+      <!-- post modal -->
+      <%- include('partials/post_modal.ejs') %>
 
-      <!-- Accordion -->
+      <!-- posts (accordion) -->
       <%- include('partials/posts.ejs') %>
     </div>
-    <!-- functions -->
-
 
     <script src="jquery.min.js"></script>
     <script src="bootstrap.bundle.min.js"></script>

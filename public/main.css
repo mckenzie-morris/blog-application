@@ -11984,6 +11984,12 @@ textarea {
   }
 }
 
+.hyphenate {
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  overflow-wrap: break-word;
+}
+
 .accordion-button {
   overflow: auto;
 }
@@ -11997,4 +12003,9 @@ textarea {
     overflow-x: auto;
     overflow-y: hidden;
   }
+}
+
+#edit_input {
+  overflow-x: auto;
+  overflow-y: hidden;
 }

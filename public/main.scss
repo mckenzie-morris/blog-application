@@ -22,6 +22,11 @@ textarea {
   }
 }
 
+.hyphenate {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
 .accordion-button {
   overflow: auto;
 }
@@ -35,4 +40,9 @@ form {
     overflow-x: auto;
     overflow-y: hidden;
   }
+}
+
+#edit_input {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
